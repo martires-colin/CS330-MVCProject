@@ -9,10 +9,10 @@ class Controller:
         self.completed_controller = CompletedController(model, view)
 
         self.model.activity.add_event_listener(
-            "activity_changed", self.activity_state_listener
+            "activity_changed", self.activity_changed_listener
         )
 
-    def activity_state_listener(self, data):
+    def activity_changed_listener(self, data):
         self.home_controller.update_view()
 
     def start(self):

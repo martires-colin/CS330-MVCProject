@@ -10,7 +10,10 @@ class HomeView(Frame):
         self.header.grid(row=0, column=0, padx=10, pady=10, sticky="ew")
 
         self.activity_description = Label(self, text="")
-        self.activity_description.grid(row=1, column=0, padx=10, pady=10, sticky="ew")
+        self.activity_description.grid(row=1, column=0, padx=1, pady=10, sticky="ew")
+
+        self.completeActivity_btn = Button(self, text="Complete Activity")
+        self.completeActivity_btn.grid(row=1, column=1, padx=1, pady=10)
 
         self.getActivity_btn = Button(self, text="Generate Activity")
         self.getActivity_btn.grid(row=2, column=0, padx=10, pady=10)
