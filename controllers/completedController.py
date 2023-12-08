@@ -9,5 +9,4 @@ class CompletedController:
         self.frame.returnHome_btn.config(command=self.returnHome)
 
     def returnHome(self):
-        print("Navigating to home page")
         self.view.switch("home")
