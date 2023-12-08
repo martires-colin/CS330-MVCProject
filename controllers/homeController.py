@@ -18,17 +18,19 @@ class HomeController:
     def getActivity(self):
         response = requests.get("https://www.boredapi.com/api/activity/")
         data = response.json()
+        self.frame.iscompleted_alert.config(text="")
         self.model.activity.setActivity(data['activity'])
 
     def completeActivity(self):
         if not self.model.activity.is_completed:
             self.model.activity.completeActivity()
+            self.frame.iscompleted_alert.config(text="Activity completed!")
             post = {
                 "activity_description": self.model.activity.activity_description,
             }
             completed_activities.insert_one(post)
         else:
-            print("Activity already completed")
+            self.frame.iscompleted_alert.config(text="You already completed this activity!")
         
     def navigateCompleted(self):
         self.completed_controller = CompletedController(self.model, self.view)
