@@ -1,5 +1,6 @@
 import requests
 from mongodb.mongodb_config import *
+from .completedController import CompletedController
 
 class HomeController:
     def __init__(self, model, view):
@@ -25,12 +26,13 @@ class HomeController:
             post = {
                 "activity_description": self.model.activity.activity_description,
             }
-            print(post)
             completed_activities.insert_one(post)
         else:
             print("Activity already completed")
-
+        
     def navigateCompleted(self):
+        self.completed_controller = CompletedController(self.model, self.view)
+        self.completed_controller.getCompletedActivities()
         self.view.switch("completed")
 
     def update_view(self):   

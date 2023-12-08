@@ -12,8 +12,5 @@ class Activity(ObservableModel):
         self.trigger_event("activity_changed")
     
     def completeActivity(self):
-        print("Activity marked as completed")
         self.is_completed = True
         self.trigger_event("activity_completed")
-
-    
